@@ -1,0 +1,61 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="webLink"
+            type="com.nathan.app.weblinklist.model.WebLink" />
+
+        <variable
+            name="isSelected"
+            type="boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{isSelected ? @color/colorSelected : @android:color/white}"
+        android:padding="@dimen/regular_margin">
+
+        <ImageView
+            android:id="@+id/web_image"
+            avatarUrl="@{webLink.imgUrl}"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@id/web_url"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/web_title"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/web_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/regular_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{webLink.title}"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/web_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="CNA - Breaking news, latest Singapore, Asia and world news" />
+
+        <TextView
+            android:id="@+id/web_url"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/regular_margin"
+            android:text="@{webLink.url}"
+            android:textColor="@color/colorSubText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/web_image"
+            app:layout_constraintTop_toBottomOf="@id/web_title"
+            tools:text="https://www.channelnewsasia.com" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
